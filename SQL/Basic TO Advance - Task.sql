@@ -102,8 +102,57 @@ WHERE d1.Location = 'New York';
 -- Set Operators
 
 -- 1. Write a query to find employees who work in either the 'HR' or 'Finance' department.
-SELECT Emp_Name, d1.Dept_Team FROM Employees
-WHERE Dept_ID IN (
-	SELECT Dept_ID FROM Department d1
-	WHERE d1.Dept_Team IN ("HR", "Finance")
-);
+SELECT Emp_Name
+FROM Employees
+WHERE Dept_ID IN (SELECT Dept_ID FROM Department WHERE Dept_Team = 'HR')
+UNION
+SELECT Emp_Name
+FROM Employees
+WHERE Dept_ID IN (SELECT Dept_ID FROM Department WHERE Dept_Team = 'Finance');
+
+-- 2. Retrieve the names of employees who are working on both Project A and Project B.
+SELECT E.Emp_Name
+FROM Employees E
+JOIN Projects P ON E.Dept_ID = P.Dept_ID
+WHERE P.Project_Name IN ('Project A', 'Project B')
+GROUP BY E.Emp_Name
+HAVING COUNT(DISTINCT P.Project_Name) = 2;
+
+-- 3. Find employees who are not assigned to any project.
+SELECT E.Emp_Name
+FROM Employees E
+LEFT JOIN Projects P ON E.Dept_ID = P.Dept_ID
+WHERE P.Project_ID IS NULL;
+
+-- 4. Write a query to get all unique job titles across all departments.
+
+SELECT DISTINCT Designation
+FROM Employees;
+
+-- 5. Combine two tables (employees and former_employees) and remove duplicates.
+
+SELECT * FROM EMPLOYEES
+UNION
+SELECT Emp_ID, Emp_Name, DOB, Blood_Group, Date_Of_Joining, Designation, Team, Salary, Address, Location, Pin_Code, Dept_ID
+FROM former_employees;
+
+-- DML and DDL
+
+-- 1. Write a query to add a new employee to the employees table.
+INSERT INTO Employees (Emp_ID, Emp_Name, DOB, Blood_Group, Date_Of_Joining, Designation, Team, Salary, Address, Location, Pin_Code, Dept_ID)
+VALUES (12318, 'Sandeep Sharma', '1992-07-25', 'A+', '2024-11-25', 'Developer', 'SE Team', 60000, '12, 1st Main Road, BTM Layout', 'Bangalore', 560029, 'DEPT003');
+
+-- 2. Update the salary of all employees in the 'IT' department by 10%.
+UPDATE Employees
+SET Salary = Salary + Salary*10/100;
+
+-- 3. Delete all employees who have not worked for more than 5 years.
+DELETE FROM Employees
+WHERE Date_Of_Joining <= CURDATE() - INTERVAL 5 YEAR;
+
+-- 4. Create a new table departments_backup with the same structure as the departments table.
+CREATE TABLE departments_backup AS
+SELECT * FROM department;
+
+-- 5. Drop the temporary_data table from the database.
+DROP TABLE temporary_data;

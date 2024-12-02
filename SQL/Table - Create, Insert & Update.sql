@@ -4,11 +4,7 @@ CREATE DATABASE aspiresys;
 
 USE aspiresys;
 
-<<<<<<< HEAD
 -- TABLE CREATION (EMPLOYEE)	
-=======
--- TABLE CREATION
->>>>>>> 516cbab5117239afe3b37a1a24efce5f9b130c16
 
 CREATE TABLE Employees (
 Emp_ID INT PRIMARY KEY,
@@ -21,12 +17,8 @@ Team varchar(20) NOT NULL,
 Salary INT NOT NULL,
 Address varchar(50) NOT NULL,
 Location varchar(10) NOT NULL,
-<<<<<<< HEAD
 Pin_Code INT NOT NULL,
 DEPT_ID varchar(10)
-=======
-Pin_Code INT NOT NULL
->>>>>>> 516cbab5117239afe3b37a1a24efce5f9b130c16
 );
 
 INSERT INTO Employees (Emp_ID, Emp_Name, DOB, Blood_Group, Date_Of_Joining, Designation, Team, Salary, Address, Location, Pin_Code) 
@@ -39,7 +31,6 @@ VALUES
 
 SELECT * FROM Employees;
 
-<<<<<<< HEAD
 -- UPDATE COLUMN AND INSERTING VALUES
 
 ALTER TABLE Employees
@@ -128,5 +119,27 @@ DROP COLUMN Emp_ID;
 
 ALTER TABLE Projects
 DROP FOREIGN KEY fk_emp_id;
-=======
->>>>>>> 516cbab5117239afe3b37a1a24efce5f9b130c16
+
+-- TABLE CREATION (FORMER_EMPLOYEE)
+
+CREATE TABLE former_employees (
+    Emp_ID INT PRIMARY KEY,
+    Emp_Name VARCHAR(30) NOT NULL,
+    DOB DATE NOT NULL,
+    Blood_Group VARCHAR(5) NOT NULL,
+    Date_Of_Joining DATE NOT NULL,
+    Date_Of_Leaving DATE, 
+    Designation VARCHAR(20) NOT NULL,
+    Team VARCHAR(20) NOT NULL,
+    Salary INT NOT NULL,
+    Address VARCHAR(50) NOT NULL,
+    Location VARCHAR(10) NOT NULL,
+    Pin_Code INT NOT NULL,
+    Dept_ID VARCHAR(10)
+);
+
+INSERT INTO former_employees (Emp_ID, Emp_Name, DOB, Blood_Group, Date_Of_Joining, Date_Of_Leaving, Designation, Team, Salary, Address, Location, Pin_Code, Dept_ID)
+VALUES
+(12321, 'Vikram Singh', '1995-06-15', 'O+', '2018-01-12', '2023-12-01', 'Developer', 'TN Team', 55000, '10, Kamaraj Street, T Nagar', 'Chennai', 600017, 'DEPT001'),
+(12322, 'Rita Menon', '1990-02-25', 'B-', '2016-07-09', '2022-10-15', 'Manager', 'HR Team', 75000, '8, MG Road, Koramangala', 'Bangalore', 560034, 'DEPT002');
+
