@@ -18,13 +18,13 @@ public class ProductManager {
 
 		boolean running = true;
 		while (running) {
-			System.out.println("\nProduct Management System");
+			System.out.println("\n---------- Product Management System ----------");
 			System.out.println("1. Add Product");
 			System.out.println("2. Update Product");
 			System.out.println("3. Delete Product");
 			System.out.println("4. View Products");
 			System.out.println("5. Exit");
-			System.out.print("Enter your choice: ");
+			System.out.print("\nEnter your choice: ");
 			int choice = scanner.nextInt();
 			scanner.nextLine();
 

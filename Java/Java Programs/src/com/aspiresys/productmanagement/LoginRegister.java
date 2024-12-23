@@ -17,9 +17,9 @@ public class LoginRegister {
         while (!loggedIn) {
             // Display login/register options
         	
-            System.out.println("\nWelcome to the Product Management System");
+            System.out.println("\n-- Welcome to the Product Management System -- \n");
             System.out.println("1. Login");
-            System.out.println("2. Register");
+            System.out.println("2. Register \n");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); 
@@ -27,17 +27,17 @@ public class LoginRegister {
             if (choice == 1) {
                 // Attempt to authenticate the user
                 if (login.authenticate(scanner)) {
-                    System.out.println("Login successful.");
+                    System.out.println("\nLogin successful.");
                     loggedIn = true;  // Exit the loop to proceed to product management
                     // Proceed to product management logic after successful login
                 } else {
-                    System.out.println("Invalid username or password. Please try again.");
+                    System.out.println("\nInvalid username or password. Please try again.");
                 }
             } else if (choice == 2) {
                 // Register a new user
                 login.register(scanner);
             } else {
-                System.out.println("Invalid option. Please choose either 1 or 2.");
+                System.out.println("\nInvalid option. Please choose either 1 or 2.");
             }
         }
 

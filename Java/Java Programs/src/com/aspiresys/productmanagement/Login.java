@@ -22,13 +22,13 @@ public class Login {
 			properties.load(fileInputStream);
 			this.username = properties.getProperty("username");
 			this.password = properties.getProperty("password");
-		} catch (IOException e) {
-			System.out.println("Error loading credentials from properties file: " + e.getMessage());
+		} catch (IOException exception) {
+			System.out.println("Error loading credentials from properties file: " + exception.getMessage());
 		}
 	}
 
 	public boolean authenticate(Scanner scanner) {
-		System.out.print("Enter username: ");
+		System.out.print("\nEnter username: ");
 		String inputUsername = scanner.nextLine();
 		System.out.print("Enter password: ");
 		String inputPassword = scanner.nextLine();
@@ -72,12 +72,13 @@ public class Login {
     properties.setProperty("password", newPassword);
 
     try (FileOutputStream fileOutputStream = new FileOutputStream("config.properties", true)) {
+    	
         // Using append mode to avoid overwriting the existing properties file
         properties.store(fileOutputStream, "User credentials");
         System.out.println("Registration successful. Credentials saved.");
         loadCredentials();
-    } catch (IOException e) {
-        System.out.println("Error saving credentials to properties file: " + e.getMessage());
+    } catch (IOException exception) {
+        System.out.println("Error saving credentials to properties file: " + exception.getMessage());
     }
 }
 }
