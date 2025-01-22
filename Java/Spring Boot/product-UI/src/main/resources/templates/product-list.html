@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<h1 class="title">Product List</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.description}"></td>
+            <td>
+                <a th:href="@{/product/{id}(id=${product.id})}"><i class="fa-solid fa-eye"></i></a> | &nbsp;
+                <a th:href="@{/product/edit/{id}(id=${product.id})}"><i class="fa-solid fa-pen-to-square"></i></a> | &nbsp;
+                <a th:href="@{/product/delete/{id}(id=${product.id})}"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Link to add a new product -->
+<a class="button" href="/product/add">Add New Product</a>
+
+</body>
+</html>

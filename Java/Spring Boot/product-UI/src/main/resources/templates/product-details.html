@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<h1 class="title">Product Details</h1>
+
+
+<div class="product-details">
+    <p><strong>Name:</strong> <span th:text="${product.name}"></span></p>
+    <p><strong>Price:</strong> <span th:text="${product.price}"></span></p>
+    <p><strong>Description:</strong> <span th:text="${product.description}"></span></p>
+</div>
+
+<!-- Link to edit product -->
+<div class="edit-link">
+    <a th:href="@{/product/edit/{id}(id=${product.id})}">Edit Product</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+Java FileWriter and FileReader classes are used to write and read data from text files. 
+Reading and writing take place character by character.
