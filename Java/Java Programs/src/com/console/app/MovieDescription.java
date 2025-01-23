@@ -2,12 +2,7 @@ package com.console.app;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -31,6 +26,7 @@ public class MovieDescription {
                 String password = properties.getProperty("db.password");
 
                 connection = DriverManager.getConnection(url, username, password);
+                System.out.println("Connected to the database successfully.");
             } catch (IOException exception) {
                 System.err.println("Error loading configuration: " + exception.getMessage());
                 throw new SQLException("Failed to load database configuration", exception);
@@ -54,12 +50,12 @@ public class MovieDescription {
                 movieList.add(new Movie(id, name, showtime, availableSeats, ticketPrice));
             }
 
-            System.out.println("\nAvailable Movies:");
+            System.out.println("\n==================== Available Movies ====================");
             for (int i = 0; i < movieList.size(); i++) {
                 Movie movie = movieList.get(i);
                 System.out.println((i + 1) + ". " + movie.getName() + " (" + movie.getShowtime() + ")");
                 System.out.println("Available Seats: " + movie.getAvailableSeats());
-                System.out.println("Price: ₹" + movie.getTicketPrice());
+                System.out.println("Ticket Price: ₹" + movie.getTicketPrice());
                 System.out.println();
             }
 
@@ -78,9 +74,9 @@ public class MovieDescription {
 
     // Method to handle ticket booking logic
     private void bookTickets(Scanner scanner, List<Movie> movieList) {
-        System.out.print("\nEnter movie number to book or 0 to logout: ");
+        System.out.print("\nEnter the movie number to book tickets (or 0 to logout): ");
         int choice = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine(); // Consume newline
 
         if (choice == 0) {
             System.out.println("You have logged out. Goodbye!");
@@ -88,7 +84,7 @@ public class MovieDescription {
         }
 
         if (choice < 1 || choice > movieList.size()) {
-            System.out.println("Invalid choice. Try again.");
+            System.out.println("Invalid choice. Please try again.");
             return;
         }
 
@@ -99,9 +95,9 @@ public class MovieDescription {
             return;
         }
 
-        System.out.print("Enter number of tickets: ");
+        System.out.print("Enter the number of tickets: ");
         int numberOfTickets = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // Consume newline
 
         if (numberOfTickets <= 0 || numberOfTickets > selectedMovie.getAvailableSeats()) {
             System.out.println("Invalid number of tickets. Please enter a valid number.");

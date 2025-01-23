@@ -29,7 +29,7 @@ public class Login {
 
 	public boolean authenticate(Scanner scanner) {
 		System.out.print("\nEnter username: ");
-		String inputUsername = scanner.nextLine();
+		String inputUsername = scanner.nextLine();	
 		System.out.print("Enter password: ");
 		String inputPassword = scanner.nextLine();
 
