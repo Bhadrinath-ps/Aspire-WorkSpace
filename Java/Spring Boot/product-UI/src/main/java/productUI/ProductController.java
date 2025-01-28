@@ -19,8 +19,8 @@ public class ProductController {
     @GetMapping
     public String getAllProducts(Model model) {
         List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);  // Add products to the model
-        return "product-list";  // Thymeleaf will look for 'product-list.html'
+        model.addAttribute("products", products);  
+        return "product-list";  
     }
 
     // Serve the product details page
@@ -28,24 +28,24 @@ public class ProductController {
     public String getProductById(@PathVariable int id, Model model) {
         Optional<Product> product = productService.getProductById(id);
         if (product.isPresent()) {
-            model.addAttribute("product", product.get());  // Add product to the model
-            return "product-details";  // Thymeleaf will look for 'product-details.html'
+            model.addAttribute("product", product.get()); 
+            return "product-details"; 
         }
-        return "404";  // Return a 404 page if product not found
+        return "404";  
     }
 
     // Add a new product (GET method for displaying the form)
     @GetMapping("/add")
     public String showAddProductForm(Model model) {
-        model.addAttribute("product", new Product());  // Create an empty product object
-        return "add-product";  // Thymeleaf will look for 'add-product.html'
+        model.addAttribute("product", new Product());  
+        return "add-product";  
     }
 
     // Add a new product (POST method for handling form submission)
     @PostMapping("/add")
     public String addProduct(@ModelAttribute Product product) {
-        productService.addProduct(product);  // Save the product
-        return "redirect:/product";  // Redirect to product list after adding the product
+        productService.addProduct(product);  
+        return "redirect:/product"; 
     }
 
     // Update an existing product (GET method for displaying the form)
@@ -54,22 +54,22 @@ public class ProductController {
         Optional<Product> product = productService.getProductById(id);
         if (product.isPresent()) {
             model.addAttribute("product", product.get());
-            return "edit-product";  // Thymeleaf will look for 'edit-product.html'
+            return "edit-product"; 
         }
-        return "404";  // Return 404 if the product is not found
+        return "404";  
     }
 
     // Update an existing product (POST method for handling form submission)
     @PostMapping("/edit/{id}")
     public String editProduct(@PathVariable int id, @ModelAttribute Product product) {
         productService.updateProduct(id, product);
-        return "redirect:/product";  // Redirect to product list after updating
+        return "redirect:/product"; 
     }
 
     // Delete a product
     @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
-        return "redirect:/product";  // Redirect to product list after deleting the product
+        return "redirect:/product"; 
     }
 }
