@@ -5,10 +5,12 @@ Welcome to the **AspireSystems-Workspace** repository! This repository is dedica
 ## Table of Contents
 
 - [Technologies and Projects](#technologies-and-projects)
+  - [Apache Solr](#apache-solr)
+  - [Azure & AWS - Scenario](#azure--aws---scenario)
   - [Azure](#azure)
-  - [AWS](#aws)
   - [HTTP](#http)
   - [Java](#java)
+  - [Presentation](#presentation)
   - [Project-MovieTicketBooking (Angular)](#project-movieticketbooking-angular)
   - [RabbitMQ](#rabbitmq)
   - [Redux-Saga](#redux-saga)
@@ -23,17 +25,23 @@ Welcome to the **AspireSystems-Workspace** repository! This repository is dedica
 
 This repository contains tasks and projects from the following technologies:
 
+### Apache Solr
+This section contains tasks and projects related to **Apache Solr**, an open-source search platform built on Apache Lucene. It covers the configuration, indexing, and querying of data, as well as implementing full-text search capabilities.
+
+### Azure & AWS - Scenario
+This folder contains a scenario-based task that compares and contrasts solutions in **Azure** and **AWS**. The task may involve cloud architecture, service selection, and deployment on both platforms.
+
 ### Azure
 This section contains tasks related to cloud computing on **Microsoft Azure**. These projects cover areas such as infrastructure management, app hosting, and database services.
-
-### AWS
-This section includes tasks and projects based on **Amazon Web Services** (AWS). It focuses on cloud computing services, including EC2, S3, Lambda, etc.
 
 ### HTTP
 This folder includes tasks related to **HTTP protocols**, server-client communication, API handling, and the implementation of RESTful services.
 
 ### Java
 This folder contains Java-based projects and exercises, including object-oriented programming (OOP), data structures, and algorithms.
+
+### Presentation
+This section includes presentation-based tasks, including slides or other visual presentations on technical topics, soft skills, or project demonstrations.
 
 ### Project-MovieTicketBooking (Angular)
 This section showcases an **Angular-based movie ticket booking system**. It includes front-end development practices such as routing, state management, and UI development.
@@ -55,4 +63,3 @@ This section includes **Software Requirements Specification** (SRS) documents an
 
 ### Soft Skills
 This folder contains resources and exercises focused on enhancing **soft skills**, such as communication, teamwork, problem-solving, and leadership.
-
